@@ -1,0 +1,139 @@
+<html>
+<head>
+</head>
+<body>
+	
+<script language="javascript">
+
+var largo= 5;
+var valor=0;
+
+// crear matriz 
+var matriz=new Array(largo);
+for (var i=0; i < largo; i++){
+	matriz[i]=new Array(largo);
+}
+
+for (var i=0; i<largo; i++){
+	for (var j=0; j<largo; j++){
+		matriz[i][j]=valor;
+		valor++;
+	}	
+}
+
+imprimirMatriz(matriz,largo,largo);
+
+//== recorrer matriz diagonal
+var largoFila=largo;
+var largoColumna=largo;
+var recorreFila = 0;
+var recorreColumna=0;
+var totalVeces=largoFila*largoColumna;		
+
+//console.log ("largo MATRIZ: " +largoFila); 
+//console.log ("nro de veces: " + (largoFila*largoColumna));
+ 
+var contVeces=0;
+var strImprimir="";
+var diagonal="DER_IZQ";
+
+while (contVeces<totalVeces){
+	switch(diagonal){
+		case "DER_IZQ":
+			for (; recorreColumna>=0 && recorreFila<largoFila; recorreFila++,recorreColumna--){
+				strImprimir = "DER_IZQ: matriz["+recorreFila+"]["+recorreColumna+"] ";
+				console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
+				contVeces++;
+			}
+			recorreFila--,recorreColumna++;
+  	  		contVeces--;
+  	  	  	break;
+			
+		case "IZQ_DER":
+			for (; recorreColumna<largoColumna && recorreFila >=0  ;recorreFila--,recorreColumna++){
+				strImprimir = "IZQ_DER: matriz["+recorreFila+"]["+recorreColumna+"] ";
+				console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
+				contVeces++;
+			}
+			 
+	  	  	recorreFila++,recorreColumna--;
+			contVeces--;
+	 		break;  
+	}
+	
+		
+	
+	//console.log ("veces: " +  contVeces);
+	
+	//console.log ("cond 1-A: " + (recorreColumna<largoColumna && recorreFila==0));
+	//console.log ("cond 1-B: " + (recorreColumna<largoColumna && recorreFila==largoFila));
+	
+	// identifica mov diagonal
+	if ( (recorreColumna<largoColumna && recorreFila==0 ) || 
+		 (recorreColumna<largoColumna && recorreFila== (largoFila-1)) ){
+		
+		// == cuando sume fila o columna
+		if (recorreColumna == (largoColumna-1))
+			recorreFila++;
+		else	
+			recorreColumna++;	
+		
+		// Identificar diagonal que viene	
+		if ( (recorreColumna==0) || (recorreFila==(largoFila-1))  ){
+			diagonal="IZQ_DER";  
+		}else{ 
+			diagonal="DER_IZQ"; 
+		}
+		//console.log ("suma columna: matriz["+ recorreFila +"]["+ recorreColumna +"]");
+		
+	}else{
+		//console.log ("cond 2-A: " + (recorreColumna==0 && recorreFila>=0));
+		//console.log ("cond 2-B: " + (recorreColumna==largoColumna && recorreFila>=0 ));
+		
+		// === sumar fila
+		if ( (recorreColumna==0 && recorreFila>=0) || 
+			 (recorreColumna==(largoColumna-1) && recorreFila>=0) ){
+			//recorreFila++;	
+			
+			// == cuando sume fila o columna
+			if (recorreFila==(largoFila-1))
+				recorreColumna++;
+			else	
+				recorreFila++;	
+			
+			// Identificar diagonal que viene				
+			if ( (recorreColumna==0) || (recorreFila==(largoFila-1))  ){
+				diagonal="IZQ_DER"; 
+			}else{
+				diagonal="DER_IZQ"; 
+			}
+			//console.log ("suma fila: matriz["+ recorreFila +"]["+ recorreColumna +"]");
+		}
+	}
+	//console.log ("diagonal: " + diagonal + " pos: matrix["+ recorreFila +"]["+ recorreColumna +"]"); 
+	
+	contVeces++;
+}
+
+
+// f(x) imprimir matriz 
+function imprimirMatriz(matrix,largoFila,largoColumna){
+	for (var i=0; i<largoFila; i++){
+		var fila ="";
+		for (var j=0; j<largoColumna; j++){
+			if (matrix[i][j]<10)
+				fila += "0"+ matrix[i][j] +" ";
+			else
+				fila += matrix[i][j] + " ";
+		}
+		console.log("fila["+ i +"]: " + fila);	
+	}
+	console.log("=========");	
+}
+
+</script>	
+
+Matriz Zig Zag
+
+</body>
+</html>
