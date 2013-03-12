@@ -6,27 +6,25 @@
 <script language="javascript">
 
 var largo=6;
-var valor=0;
-
 var largoFila=largo;
 var largoColumna=largo;
 var recorreFila = 0;
 var recorreColumna=0;
 var totalVeces=largoFila*largoColumna;		
-var contVeces=0;
-var strImprimir="";
 var diagonal="DER_IZQ";
-
-var matriz=new Array(largo);
-
+var matriz;
 
 crearMatriz();
+llenarMatriz();
 imprimirMatriz(matriz,largo,largo);
 recorreMatriz();
 
 
 // f(x) recorrer matriz diagonal
 function recorreMatriz(){
+	var contVeces=0;
+	var strImprimir="";
+	
 	while (contVeces<totalVeces){
 		switch(diagonal){
 			case "DER_IZQ":
@@ -45,18 +43,15 @@ function recorreMatriz(){
 					console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
 					contVeces++;
 				}
-			 
-		  	  	recorreFila++,recorreColumna--;
+			 	recorreFila++,recorreColumna--;
 				contVeces--;
 		 		break;  
 		}
 	
 		defDiagonalPosicion();
-	
-		
-		//console.log ("diagonal: " + diagonal + " pos: matrix["+ recorreFila +"]["+ recorreColumna +"]"); 
-	
 		contVeces++;
+		//console.log ("diagonal: " + diagonal + " pos: matrix["+ recorreFila +"]["+ recorreColumna +"]"); 
+		
 	}
 }
 
@@ -130,20 +125,24 @@ function imprimirMatriz(matrix,largoFila,largoColumna){
 	console.log("=========");	
 }
 
-// fx crear matriz y llenado con valores
+// fx crear matriz
 function crearMatriz(){
+	matriz=new Array(largo);
 	for (var i=0; i < largo; i++){
 		matriz[i]=new Array(largo);
 	}
+} 
 
+// fx llenado con valores
+function llenarMatriz(){
+	var valor=0;
 	for (var i=0; i<largo; i++){
 		for (var j=0; j<largo; j++){
 			matriz[i][j]=valor;
 			valor++;
 		}	
 	}
-} 
-
+}
 
 </script>	
 
