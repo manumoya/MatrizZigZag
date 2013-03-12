@@ -1,7 +1,7 @@
 Objetivo
 ========
 Objetivo: realizar un algoritmo que recorra una matriz de largo N de forma ZIG ZAG. 
-Lo anterior se usado en los algoritmos de compresión de imágenes JPEG.
+Lo anterior es usado en los algoritmos de compresión de imágenes JPEG.
 
 Detalle
 ========
