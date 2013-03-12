@@ -2,10 +2,13 @@
 <head>
 </head>
 <body>
+
+
+Matriz Zig Zag <br/><br/>	
 	
 <script language="javascript">
 
-var largo=6;
+var largo=5;
 var largoFila=largo;
 var largoColumna=largo;
 var recorreFila = 0;
@@ -19,32 +22,45 @@ llenarMatriz();
 imprimirMatriz(matriz,largo,largo);
 recorreMatriz();
 
-
 // f(x) recorrer matriz diagonal
 function recorreMatriz(){
 	var contVeces=0;
 	var strImprimir="";
+	var strDiagonal="";
 	
 	while (contVeces<totalVeces){
 		switch(diagonal){
-			case "DER_IZQ":
-				for (; recorreColumna>=0 && recorreFila<largoFila; recorreFila++,recorreColumna--){
-					strImprimir = "DER_IZQ: matriz["+recorreFila+"]["+recorreColumna+"] ";
-					console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
+		case "DER_IZQ":
+			for (; recorreColumna>=0 && recorreFila<largoFila; recorreFila++,recorreColumna--){
+					//strImprimir = "DER_IZQ: matriz["+recorreFila+"]["+recorreColumna+"] ";
+					strDiagonal += matriz[recorreFila][recorreColumna] + " ";
+					//console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
 					contVeces++;
 				}
 				recorreFila--,recorreColumna++;
 	  	  		contVeces--;
-	  	  	  	break;
+				
+				console.log ("diagonal: " + strDiagonal);
+				document.write("diagonal: " + strDiagonal +"<br>");	
+				
+				strDiagonal="";
+				
+				break;
 			
 			case "IZQ_DER":
 				for (; recorreColumna<largoColumna && recorreFila >=0  ;recorreFila--,recorreColumna++){
-					strImprimir = "IZQ_DER: matriz["+recorreFila+"]["+recorreColumna+"] ";
-					console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
+					//strImprimir = "IZQ_DER: matriz["+recorreFila+"]["+recorreColumna+"] ";
+					strDiagonal += matriz[recorreFila][recorreColumna] + " ";
+					//console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
 					contVeces++;
 				}
 			 	recorreFila++,recorreColumna--;
 				contVeces--;
+				
+				console.log ("diagonal: " + strDiagonal);
+				document.write("diagonal: " + strDiagonal +"<br>");	
+				strDiagonal="";
+				
 		 		break;  
 		}
 	
@@ -120,9 +136,11 @@ function imprimirMatriz(matrix,largoFila,largoColumna){
 			else
 				fila += matrix[i][j] + " ";
 		}
-		console.log("fila["+ i +"]: " + fila);	
+		console.log("fila["+ i +"]: " + fila );	
+		document.write("fila["+ i +"]: " + fila +"<br>");	
 	}
-	console.log("=========");	
+	console.log("=========");
+	document.write("=========<br>");	
 }
 
 // fx crear matriz
@@ -144,9 +162,25 @@ function llenarMatriz(){
 	}
 }
 
+
+// function main
+function rescataLargo(){
+	var doc = document.form1;
+	var largo= doc.largo.value;
+	
+	console.log("largo " + largo);	
+}
+
+
 </script>	
 
-Matriz Zig Zag
+<form name="form1">
+
+<!--
+Ingrese Largo: <input type="text" name="largo" maxlength="2" size="5" /> 
+<input type="submit" value="GO" onclick="rescataLargo();"/> <br />
+-->
+</form>
 
 </body>
 </html>
