@@ -9,4 +9,4 @@ Basado en el desafío de @lnds: http://www.programando.org/blog/2012/05/mini-des
 
 Lenguage
 ========
-JS
+JS, HTML
