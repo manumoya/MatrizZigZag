@@ -32,15 +32,12 @@ function recorreMatriz(){
 		switch(diagonal){
 		case "DER_IZQ":
 			for (; recorreColumna>=0 && recorreFila<largoFila; recorreFila++,recorreColumna--){
-					//strImprimir = "DER_IZQ: matriz["+recorreFila+"]["+recorreColumna+"] ";
 					strDiagonal += matriz[recorreFila][recorreColumna] + " ";
-					//console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
 					contVeces++;
 				}
 				recorreFila--,recorreColumna++;
 	  	  		contVeces--;
 				
-				console.log ("diagonal: " + strDiagonal);
 				document.write("diagonal: " + strDiagonal +"<br>");	
 				
 				strDiagonal="";
@@ -49,9 +46,7 @@ function recorreMatriz(){
 			
 			case "IZQ_DER":
 				for (; recorreColumna<largoColumna && recorreFila >=0  ;recorreFila--,recorreColumna++){
-					//strImprimir = "IZQ_DER: matriz["+recorreFila+"]["+recorreColumna+"] ";
 					strDiagonal += matriz[recorreFila][recorreColumna] + " ";
-					//console.log ( strImprimir + matriz[recorreFila][recorreColumna] + " ");
 					contVeces++;
 				}
 			 	recorreFila++,recorreColumna--;
@@ -66,7 +61,6 @@ function recorreMatriz(){
 	
 		defDiagonalPosicion();
 		contVeces++;
-		//console.log ("diagonal: " + diagonal + " pos: matrix["+ recorreFila +"]["+ recorreColumna +"]"); 
 		
 	}
 }
@@ -74,10 +68,6 @@ function recorreMatriz(){
 
 // f(x) Define diagonales y posiciòn inicial 
 function defDiagonalPosicion(){
-	//console.log ("veces: " +  contVeces);
-	
-	//console.log ("cond 1-A: " + (recorreColumna<largoColumna && recorreFila==0));
-	//console.log ("cond 1-B: " + (recorreColumna<largoColumna && recorreFila==largoFila));
 	
 	// identifica mov diagonal
 	if ( (recorreColumna<largoColumna && recorreFila==0 ) || 
@@ -95,16 +85,12 @@ function defDiagonalPosicion(){
 		}else{ 
 			diagonal="DER_IZQ"; 
 		}
-		//console.log ("suma columna: matriz["+ recorreFila +"]["+ recorreColumna +"]");
 		
 	}else{
-		//console.log ("cond 2-A: " + (recorreColumna==0 && recorreFila>=0));
-		//console.log ("cond 2-B: " + (recorreColumna==largoColumna && recorreFila>=0 ));
 		
 		// === sumar fila
 		if ( (recorreColumna==0 && recorreFila>=0) || 
 			 (recorreColumna==(largoColumna-1) && recorreFila>=0) ){
-			//recorreFila++;	
 			
 			// == cuando sume fila o columna
 			if (recorreFila==(largoFila-1))
@@ -118,7 +104,6 @@ function defDiagonalPosicion(){
 			}else{
 				diagonal="DER_IZQ"; 
 			}
-			//console.log ("suma fila: matriz["+ recorreFila +"]["+ recorreColumna +"]");
 		}
 	}
 	
@@ -163,24 +148,10 @@ function llenarMatriz(){
 }
 
 
-// function main
-function rescataLargo(){
-	var doc = document.form1;
-	var largo= doc.largo.value;
-	
-	console.log("largo " + largo);	
-}
 
 
 </script>	
 
-<form name="form1">
-
-<!--
-Ingrese Largo: <input type="text" name="largo" maxlength="2" size="5" /> 
-<input type="submit" value="GO" onclick="rescataLargo();"/> <br />
--->
-</form>
 
 </body>
 </html>
