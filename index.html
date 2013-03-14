@@ -22,7 +22,7 @@ llenarMatriz();
 imprimirMatriz(matriz,largo,largo);
 recorreMatriz();
 
-// f(x) recorrer matriz diagonal
+// f(x) recorrer matriz según diagonal diagonal
 function recorreMatriz(){
 	var contVeces=0;
 	var strImprimir="";
@@ -110,7 +110,7 @@ function defDiagonalPosicion(){
 }
 
 
-
+//=== f(x) complementarias
 // f(x) imprimir matriz 
 function imprimirMatriz(matrix,largoFila,largoColumna){
 	for (var i=0; i<largoFila; i++){
@@ -121,10 +121,8 @@ function imprimirMatriz(matrix,largoFila,largoColumna){
 			else
 				fila += matrix[i][j] + " ";
 		}
-		console.log("fila["+ i +"]: " + fila );	
 		document.write("fila["+ i +"]: " + fila +"<br>");	
 	}
-	console.log("=========");
 	document.write("=========<br>");	
 }
 
